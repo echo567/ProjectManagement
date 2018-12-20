@@ -45,10 +45,8 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void toRegister(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("处理注册的方法");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		System.out.println(name + "+" + password);
 		try {
 			if (name == null || password == null) {
 				request.setAttribute("msg", "姓名或密码不能为空");
@@ -57,7 +55,7 @@ public class UserServlet extends HttpServlet {
 			User user = new User(name, password);
 			userDao.addUser(user);
 			request.setAttribute("msg", "注册成功");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -67,10 +65,8 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void toLogin(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("处理登录的方法");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-		System.out.println(name + "+" + password);
 
 		try {
 			if (name == null || password == null) {
@@ -81,7 +77,6 @@ public class UserServlet extends HttpServlet {
 
 			User user = userDao.selectUserByName(name);
 			if (user.getUserName() == null) {
-				System.out.println(user);
 				request.setAttribute("msg", "用户不存在");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				return;

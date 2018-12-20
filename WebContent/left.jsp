@@ -13,8 +13,8 @@
 <body>
 	<h5>项目管理</h5>
 	<ul>
-		<li><a href="<%=path%>/project/projectAdd.jsp">添加项目</a></li>
-		<li><a href="<%=path%>/projectServlet?op=toList">查看所有项目</a></li>
+		<li><a href="<%=path%>/project/projectAdd.jsp" target="show">添加项目</a></li>
+		<li><a href="<%=path%>/projectServlet?op=toList" target="show">查看所有项目</a></li>
 
 	</ul>
 </body>

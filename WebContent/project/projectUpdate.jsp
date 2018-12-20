@@ -11,27 +11,29 @@
 <title>增加项目</title>
 </head>
 <body>
-	<form action="<%=path%>/projectServlet?op=toAdd" method="post">
+	<form action="<%=path%>/projectServlet?op=toUpdate&id=${p.id }"
+		method="post">
 		<table align="center" cellpadding="0">
+			<input type="hidden" name="id" value="${p.id }">
 			<tr>
 				<td>项目名</td>
 				<td><input type="text" name="name" value="${p.name }" /></td>
 			</tr>
 			<tr>
-				<td>开始时间</td>
-				<td><input type="date" name="startTime" /></td>
+				<td>开始时间(不准修改)</td>
+				<td><p>${p.startTime }</p></td>
 			</tr>
 			<tr>
 				<td>项目负责人</td>
-				<td><input type="text" name="user" /></td>
+				<td><input type="text" name="user" value="${p.user }" /></td>
 			</tr>
 			<tr>
 				<td>项目简介</td>
-				<td><textarea rows="5" cols="5" name="introduction"></textarea>
+				<td><textarea rows="5" cols="10" name="introduction">${p.introduction }</textarea>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="确认添加"></td>
+				<td colspan="2"><input type="submit" value="修改"></td>
 
 			</tr>
 			<tr>
