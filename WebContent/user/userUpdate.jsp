@@ -20,16 +20,16 @@
 		<input type="hidden" name="userId" value="${user.userId }" />
 		<div class="layui-form-item">
 			<label class="layui-form-label">用户名</label>
-			<div class="layui-input-block">
+			<div class="layui-input-inline">
 				<input type="text" name="userName" lay-verify="required"
 					autocomplete="off" placeholder="${user.userName }"
-					class="layui-input">
+					class="layui-input" value="${user.userName }">
 			</div>
 		</div>
 
 		<div class="layui-form-item">
 			<label class="layui-form-label">密码</label>
-			<div class="layui-input-block">
+			<div class="layui-input-inline">
 				<input type="text" name="userPassword" lay-verify="required"
 					autocomplete="off" placeholder="******" class="layui-input">
 			</div>

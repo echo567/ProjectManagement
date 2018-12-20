@@ -91,7 +91,7 @@ public class UserDao {
 	 */
 	public User selectUserById(Integer id) {
 		conn = dbUtil.getConnection();
-		String sql = "select * from tb_user where id = " + id;
+		String sql = "select * from tb_user where userId = " + id;
 		System.out.println(sql);
 		User user = new User();
 		try {

@@ -64,13 +64,20 @@ public class UserServlet extends HttpServlet {
 	private void toUpdate(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Integer userId = Integer.parseInt(request.getParameter("userId"));
-			System.out.println("修改用戶的id：" + userId);
+			User userDatabase = userDao.selectUserById(userId);
 			String userName = request.getParameter("userName");
 			String userPassword = request.getParameter("userPassword");
-			User user = new User(userId, userName, userPassword);
-			if (userDao.updateUserById(user) > 0) {
+
+			if (userName != null) {
+				userDatabase.setUserName(userName);
+			}
+			if (userPassword != "") {
+				userDatabase.setPassword(userPassword);
+			}
+
+			if (userDao.updateUserById(userDatabase) > 0) {
 				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute("user", userDatabase);
 				request.setAttribute("msg", "修改个人资料成功");
 			} else {
 				request.setAttribute("msg", "修改个人资料失败");
@@ -91,8 +98,11 @@ public class UserServlet extends HttpServlet {
 		try {
 			User user1 = userDao.selectUserByName(name);
 			if (user1.getUserId() != null) {
+				System.out.println("用户名已存在");
 				request.setAttribute("msg", "用户名已存在，请更换用户名重新注册");
 				request.getRequestDispatcher("register.jsp").forward(request, response);
+				return;
+
 			}
 			User user = new User(name, password);
 			userDao.addUser(user);

@@ -13,40 +13,47 @@
 <link rel="stylesheet" type="text/css" href="static/css/login.css" />
 </head>
 <body>
-<div class="m-login-bg">
-    <div class="m-login">
-        <img src="static/images/dog.png" alt="">
-        <div class="m-login-warp">
-            <form class="layui-form" action="<%=path%>/userServlet?op=toRegister" name="form1" method="post">
-                <h3>影票购物系统注册</h3>
-                <div class="layui-form-item">
-                    <input type="text" name="name" required lay-verify="required" placeholder="名称"
-                           autocomplete="off"
-                           class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <input type="password" name="password" required lay-verify="required" placeholder="密码"
-                           autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-item m-login-btn">
-                    <div class="layui-inline">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="register">注册</button>
-                    </div>
-                    <div class="layui-inline">
-                        <button class="layui-btn layui-btn-primary">
-                            <a href="login.jsp"> 去登录</a>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <p class="copyright">&copy;Copyright 影票购物系统 by 刘军辉、徐红、杜佳霖、叶耿</p>
-    </div>
-</div>
-<script src="static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-	
-	
-	
+	<div class="m-login-bg">
+		<div class="m-login">
+			<img src="static/images/dog.png" alt="">
+			<div class="m-login-warp">
+				<form class="layui-form"
+					action="<%=path%>/userServlet?op=toRegister" name="form1"
+					method="post">
+					<h3>影票购物系统注册</h3>
+					<div class="layui-form-item">
+						<input type="text" name="name" required lay-verify="required"
+							placeholder="名称" autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-form-item">
+						<input type="password" name="password" required
+							lay-verify="required" placeholder="密码" autocomplete="off"
+							class="layui-input">
+					</div>
+					<div class="layui-form-item m-login-btn">
+						<div class="layui-inline">
+							<button class="layui-btn layui-btn-normal" lay-submit
+								lay-filter="register">注册</button>
+						</div>
+						<div class="layui-inline">
+							<button class="layui-btn layui-btn-primary">
+								<a href="login.jsp"> 去登录</a>
+							</button>
+						</div>
+					</div>
+				</form>
+				<c:if test="${msg != null }">
+					<p style="color: red; text-align: center;">${msg }</p>
+				</c:if>
+			</div>
+			<p class="copyright">&copy;Copyright 影票购物系统 by 刘军辉、徐红、杜佳霖、叶耿</p>
+		</div>
+	</div>
+	<script src="static/layui/layui.js" type="text/javascript"
+		charset="utf-8"></script>
+
+
+
 	<script language="javascript">
 		function closeOpen() {
 			window.returnValue = false;
