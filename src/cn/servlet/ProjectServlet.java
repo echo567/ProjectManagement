@@ -50,15 +50,74 @@ public class ProjectServlet extends HttpServlet {
 			toUpdate(request, response);
 			System.out.println();
 		} else if ("toDelete".equals(op)) {
-			System.out.println("修改项目信息");
+			toDelete(request, response);
+		} else if ("toUpdatePage".equals(op)) {
+			toUpdatePage(request, response);
+		} else if ("toSelect".equals(op)) {
+			toSelect(request, response);
+		}
+
+	}
+
+	private void toSelect(HttpServletRequest request, HttpServletResponse response) {
+		try {
+		String name = request.getParameter("name");
+		Project p = projectDao.selectProjectByname(name);
+		if (p.getId() != null) {
+			request.setAttribute("p", p);
+		} else {
+			request.setAttribute("msg", "不存在此名称的项目");
+		}
+		
+			request.getRequestDispatcher("/project/projectSelect.jsp").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void toDelete(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		if (projectDao.deleteProject(id) > 0) {
+			request.setAttribute("msg", "删除项目成功");
+
+		} else {
+			request.setAttribute("msg", "修改项目成功");
+		}
+		toList(request, response);
+	}
+
+	private void toUpdatePage(HttpServletRequest request, HttpServletResponse response) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		try {
+			Project p = projectDao.selectProjectById(id);
+			request.setAttribute("p", p);
+
+			request.getRequestDispatcher("/project/projectUpdate.jsp").forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	}
 
 	private void toUpdate(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		System.out.println("需要修改的：" + id);
-
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name").trim();
+		String startTime = request.getParameter("startTime").trim();
+		String user = request.getParameter("user").trim();
+		String introduction = request.getParameter("introduction").trim();
+		Project p = new Project(id, name, startTime, user, introduction);
+		if (projectDao.updateProject(p) > 0) {
+			request.setAttribute("msg", "修改项目成功");
+		} else {
+			request.setAttribute("msg", "修改项目成功");
+		}
+		toUpdatePage(request, response);
 	}
 
 	private void toList(HttpServletRequest request, HttpServletResponse response) {

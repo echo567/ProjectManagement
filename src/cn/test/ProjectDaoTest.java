@@ -44,6 +44,6 @@ public class ProjectDaoTest {
 
 	public void delete() {
 		Project p = projectDao.selectProjectByname("name");
-		System.out.println(projectDao.deleteProject(p));
+		System.out.println(projectDao.deleteProject(p.getId()));
 	}
 }

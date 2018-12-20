@@ -54,9 +54,9 @@ public class ProjectDao {
 	/*
 	 * 删除项目
 	 */
-	public Integer deleteProject(Project p) {
+	public Integer deleteProject(int id) {
 		conn = dbUtil.getConnection();
-		String sql = "delete from tb_project where id = " + p.getId();
+		String sql = "delete from tb_project where id = " + id;
 		System.out.println(sql);
 		try {
 			ps = conn.prepareStatement(sql);
@@ -90,12 +90,37 @@ public class ProjectDao {
 		return record;
 	}
 
+	public Project selectProjectById(int id) {
+		conn = dbUtil.getConnection();
+		String sql = "select * from tb_project where id = " + id;
+		System.out.println(sql);
+		Project p = new Project();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int id1 = rs.getInt(1);
+				String name = rs.getString(2);
+				String startTime = rs.getString(3);
+				String user = rs.getString(4);
+				String introduction = rs.getString(5);
+				String note = rs.getString(6);
+				p = new Project(id1, name, startTime, user, introduction, note);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbUtil.close();
+		}
+		return p;
+	}
+
 	/*
 	 * 查找项目
 	 */
 	public Project selectProjectByname(String name) {
 		conn = dbUtil.getConnection();
-		String sql = "select * from tb_project where name = " + name;
+		String sql = "select * from tb_project where name = '" + name + "'";
 		System.out.println(sql);
 		Project p = new Project();
 		try {

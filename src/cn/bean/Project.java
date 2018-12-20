@@ -24,6 +24,15 @@ public class Project {
 		this.introduction = introduction;
 	}
 
+	public Project(Integer id, String name, String startTime, String user, String introduction) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.startTime = startTime;
+		this.user = user;
+		this.introduction = introduction;
+	}
+
 	public Project(Integer id, String name, String startTime, String user, String introduction, String note) {
 		super();
 		this.id = id;
