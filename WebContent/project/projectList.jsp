@@ -28,7 +28,7 @@
 				<td>${p.startTime }</td>
 				<td>${p.user }</td>
 				<td>${p.introduction }</td>
-				<td><a href="/projectServlet?op=toUpdate&id=" +${p.id }>修改</a>
+				<td><a href="<%=path%>/projectServlet?op=toUpdate&id=${p.id }">修改</a>
 					<a href="">删除</a></td>
 			</tr>
 		</c:forEach>
