@@ -9,37 +9,57 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>增加项目</title>
+<link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css" />
 </head>
 <body>
-	<form action="<%=path%>/projectServlet?op=toAdd" method="post">
-		<table align="center" cellpadding="0">
-			<tr>
-				<td>项目名</td>
-				<td><input type="text" name="name" /></td>
-			</tr>
-			<tr>
-				<td>开始时间</td>
-				<td><input type="date" name="startTime" /></td>
-			</tr>
-			<tr>
-				<td>项目负责人</td>
-				<td><input type="text" name="user" /></td>
-			</tr>
-			<tr>
-				<td>项目简介</td>
-				<td><textarea rows="5" cols="5" name="introduction"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="确认添加"></td>
-
-			</tr>
-			<tr>
-				<td colspan="2"><c:if test="${msg != null }">
-						<p style="color: red">${msg }</p>
-					</c:if></td>
-			</tr>
-		</table>
+	<form class="layui-form" action="<%=path%>/projectServlet?op=toAdd" method="post">
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">项目名</label>
+	    <div class="layui-input-block">
+	      <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入项目名" class="layui-input">
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	      <label class="layui-form-label">开始时间</label>
+	      <div class="layui-input-inline">
+	        <input type="text" name="startTime" id="date" lay-verify="required" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+	      </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <label class="layui-form-label">项目负责人</label>
+	    <div class="layui-input-block">
+	      <input type="text" name="user" lay-verify="required" placeholder="请输入项目负责人" autocomplete="off" class="layui-input">
+	    </div>
+	  </div>
+	  <div class="layui-form-item layui-form-text">
+	    <label class="layui-form-label">项目简介</label>
+	    <div class="layui-input-block">
+	      <textarea placeholder="请输入项目简介" class="layui-textarea" name="introduction"></textarea>
+	    </div>
+	  </div>
+	  <div class="layui-form-item">
+	    <div class="layui-input-block">
+	      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+	    </div>
+	  </div>
+	  <c:if test="${msg != null }">
+		<p style="color: red">${msg }</p>
+		</c:if>
 	</form>
+
+<script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+	layui.use(['form', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,laydate = layui.laydate;
+	  
+	  //日期
+	  laydate.render({
+	    elem: '#date'
+	  });
+	});
+</script>
 </body>
 </html>
