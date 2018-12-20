@@ -120,7 +120,7 @@ public class ProjectDao {
 	 */
 	public Project selectProjectByname(String name) {
 		conn = dbUtil.getConnection();
-		String sql = "select * from tb_project where name = " + name;
+		String sql = "select * from tb_project where name = '" + name + "'";
 		System.out.println(sql);
 		Project p = new Project();
 		try {

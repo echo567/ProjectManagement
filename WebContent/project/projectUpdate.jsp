@@ -21,7 +21,8 @@
 			</tr>
 			<tr>
 				<td>开始时间(不准修改)</td>
-				<td><p>${p.startTime }</p></td>
+				<td><input type="text" name="startTime" value="${p.startTime }"
+					readonly></td>
 			</tr>
 			<tr>
 				<td>项目负责人</td>
