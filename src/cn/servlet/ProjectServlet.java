@@ -37,6 +37,8 @@ public class ProjectServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String op = request.getParameter("op");
+		System.out.println(op);
+
 		if ("toAdd".equals(op)) {
 			System.out.println("增加项目");
 			toAdd(request, response);
