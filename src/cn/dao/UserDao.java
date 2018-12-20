@@ -28,7 +28,7 @@ public class UserDao {
 
 	public Integer addUser(User user) {
 		conn = dbUtil.getConnection();
-		String sql = "insert into t_user(userName,userPassword) values (?,?)";
+		String sql = "insert into tb_user(userName,userPassword) values (?,?)";
 		System.out.println(sql);
 		try {
 			ps = conn.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class UserDao {
 	 */
 	public Integer deleteUserById(Integer id) {
 		conn = dbUtil.getConnection();
-		String sql = "delete from t_user where userId = " + id;
+		String sql = "delete from tb_user where userId = " + id;
 		System.out.println(sql);
 		try {
 			ps = conn.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class UserDao {
 	public Integer updateUserById(User user) {
 		conn = dbUtil.getConnection();
 
-		String sql = "update t_user set userName ='" + user.getUserName() + "',userPassword = '" + user.getPassword()
+		String sql = "update tb_user set userName ='" + user.getUserName() + "',userPassword = '" + user.getPassword()
 				+ "' where userId =" + user.getUserId();
 		System.out.println(sql);
 		try {
@@ -91,7 +91,7 @@ public class UserDao {
 	 */
 	public User selectUserById(Integer id) {
 		conn = dbUtil.getConnection();
-		String sql = "select * from t_user where id = " + id;
+		String sql = "select * from tb_user where id = " + id;
 		System.out.println(sql);
 		User user = new User();
 		try {
@@ -116,7 +116,7 @@ public class UserDao {
 	 */
 	public User selectUserByName(String userName) {
 		conn = dbUtil.getConnection();
-		String sql = "select * from t_user where userName = '" + userName + "'";
+		String sql = "select * from tb_user where userName = '" + userName + "'";
 		System.out.println(sql);
 		User user = new User();
 		try {
@@ -143,7 +143,7 @@ public class UserDao {
 	public List<User> getall() {
 		conn = dbUtil.getConnection();
 		List<User> list = new ArrayList<>();
-		String sql = "select * from t_user";
+		String sql = "select * from tb_user";
 		User user = new User();
 		try {
 			ps = conn.prepareStatement(sql);
@@ -154,7 +154,7 @@ public class UserDao {
 				String name = rs.getString(2);
 				String password = rs.getString(3);
 
-				/* user = new User(id, name, password); */
+				user = new User(id, name, password);
 				list.add(user);
 				// System.out.println(user);
 			}

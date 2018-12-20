@@ -102,12 +102,13 @@ public class ProjectDao {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				p.setId(rs.getInt(1));
-				p.setName(rs.getString(2));
-				p.setStartTime(rs.getString(3));
-				p.setUser(rs.getString(4));
-				p.setIntroduction(rs.getString(5));
-				p.setNote(rs.getString(6));
+				int id = rs.getInt(1);
+				String name1 = rs.getString(2);
+				String startTime = rs.getString(3);
+				String user = rs.getString(4);
+				String introduction = rs.getString(5);
+				String note = rs.getString(6);
+				p = new Project(id, name, startTime, user, introduction, note);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -125,19 +126,20 @@ public class ProjectDao {
 		conn = dbUtil.getConnection();
 		List<Project> list = new ArrayList<>();
 		String sql = "select * from tb_project";
-		Project p = new Project();
+		Project p;
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				p.setId(rs.getInt(1));
-				p.setName(rs.getString(2));
-				p.setStartTime(rs.getString(3));
-				p.setUser(rs.getString(4));
-				p.setIntroduction(rs.getString(5));
-				p.setNote(rs.getString(6));
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				String startTime = rs.getString(3);
+				String user = rs.getString(4);
+				String introduction = rs.getString(5);
+				String note = rs.getString(6);
 
+				p = new Project(id, name, startTime, user, introduction, note);
 				list.add(p);
 				// System.out.println(user);
 			}

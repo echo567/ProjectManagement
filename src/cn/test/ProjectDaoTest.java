@@ -15,10 +15,10 @@ public class ProjectDaoTest {
 
 	public static void main(String[] args) {
 		ProjectDaoTest test = new ProjectDaoTest();
-		 test.add();
+		// test.add();
 		// test.getall();
-		// test.update();
-//		test.delete();
+		test.update();
+		// test.delete();
 
 	}
 
@@ -32,10 +32,10 @@ public class ProjectDaoTest {
 		Project p = projectDao.selectProjectByname("name");
 		System.out.println("修改之前的" + p);
 		// p.setId(2222);
-		p.setName("1233221");
-		p.setNote("note");
-		System.out.println("修改之后的：" + p);
-		projectDao.updateProject(p);
+		// p.setName("1233221");
+		// p.setNote("note");
+		// System.out.println("修改之后的：" + p);
+		// projectDao.updateProject(p);
 	}
 
 	public void getall() {

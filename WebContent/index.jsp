@@ -11,13 +11,14 @@
 <title>index页面</title>
 </head>
 <frameset rows="100px, " noresize="noresize">
-		<frame src="header.jsp">
-		<frameset cols="20%, ">
-			<frame src="left.jsp">
-			<frame name="show" src="right.jsp">
-		</frameset>
-	</frameset>
+	<frame src="header.jsp">
+	<frameset cols="20%, ">
 
-	
+		<frame src="left.jsp">
+		<frame name="show" src="right.jsp">
+	</frameset>
+</frameset>
+
+
 
 </html>

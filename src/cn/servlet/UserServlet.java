@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cn.bean.User;
 import cn.dao.UserDao;
@@ -89,7 +90,9 @@ public class UserServlet extends HttpServlet {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				return;
 			} else {
-				request.setAttribute("user", user);
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				// request.setAttribute("user", user);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} catch (Exception e) {

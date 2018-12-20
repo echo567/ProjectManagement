@@ -16,7 +16,8 @@ public class UserDaoTest {
 		 * userDaoTest.finaAll();
 		 */
 		// userDaoTest.select();
-		userDaoTest.delete();
+		//userDaoTest.delete();
+		userDaoTest.finaAll();
 	}
 
 	public void add(User user) {
