@@ -8,33 +8,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>增加项目</title>
+<title>修改用户资料</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/layui/css/layui.css" />
+
 </head>
 <body>
 	<form action="<%=path%>/userServlet?op=toUpdate&id=${user.userId }"
 		method="post">
-		<table align="center" cellpadding="0">
-			<input type="hidden" name="userId" value="${user.userId }" />
-			<tr>
-				<td>用户名</td>
-				<td><input type="text" name="name" value="${user.userName }" /></td>
-			</tr>
 
-			<tr>
-				<td>密码</td>
-				<td><input type="password" name="userPassword" /></td>
-			</tr>
+		<input type="hidden" name="userId" value="${user.userId }" />
+		<div class="layui-form-item">
+			<label class="layui-form-label">用户名</label>
+			<div class="layui-input-block">
+				<input type="text" name="userName" lay-verify="required"
+					autocomplete="off" placeholder="${user.userName }"
+					class="layui-input">
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">密码</label>
+			<div class="layui-input-block">
+				<input type="text" name="userPassword" lay-verify="required"
+					autocomplete="off" placeholder="******" class="layui-input">
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="demo1">确认修改</button>
+			</div>
+		</div>
 
 
-			<tr>
-				<td colspan="2"><input type="submit" value="修改"></td>
-
-			</tr>
-			<tr>
-				<td colspan="2"><c:if test="${msg != null }">
-						<p style="color: red">${msg }</p>
-					</c:if></td>
-			</tr>
+		<tr>
+			<td colspan="2"><c:if test="${msg != null }">
+					<p style="color: red">${msg }</p>
+				</c:if></td>
+		</tr>
 		</table>
 	</form>
 </body>

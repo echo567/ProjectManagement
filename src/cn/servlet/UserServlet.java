@@ -50,10 +50,14 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void logout(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			HttpSession session = request.getSession();
+			session.invalidate();
 
-		HttpSession session = request.getSession();
-		session.invalidate();
-		request.getRequestDispatcher("/login.jsp");
+			response.sendRedirect("login.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -61,7 +65,7 @@ public class UserServlet extends HttpServlet {
 		try {
 			Integer userId = Integer.parseInt(request.getParameter("userId"));
 			System.out.println("修改用戶的id：" + userId);
-			String userName = request.getParameter("name");
+			String userName = request.getParameter("userName");
 			String userPassword = request.getParameter("userPassword");
 			User user = new User(userId, userName, userPassword);
 			if (userDao.updateUserById(user) > 0) {
@@ -74,10 +78,8 @@ public class UserServlet extends HttpServlet {
 
 			request.getRequestDispatcher("/user/userUpdate.jsp").forward(request, response);
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -87,8 +89,9 @@ public class UserServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		try {
-			if (name == null || password == null) {
-				request.setAttribute("msg", "姓名或密码不能为空");
+			User user1 = userDao.selectUserByName(name);
+			if (user1.getUserId() != null) {
+				request.setAttribute("msg", "用户名已存在，请更换用户名重新注册");
 				request.getRequestDispatcher("register.jsp").forward(request, response);
 			}
 			User user = new User(name, password);

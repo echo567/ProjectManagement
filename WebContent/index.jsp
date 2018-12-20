@@ -24,7 +24,7 @@
 		<div class="layui-header">
 			<div class="layui-logo">项目管理系统</div>
 			<ul class="layui-nav layui-layout-right">
-				<li class="layui-nav-item"><span>军辉</span></li>
+				<li class="layui-nav-item"><span>${user.userName }</span></li>
 				<li class="layui-nav-item"><a
 					href="<%=path%>/userServlet?op=logout">退了</a></li>
 			</ul>
@@ -39,16 +39,13 @@
 						<dl class="layui-nav-child">
 							<a href="javascript:;"
 								data-options="{url:'<%=path%>/user/userUpdate.jsp',title:'修改个人资料' }">修改个人资料</a>
-
-
 						</dl></li>
 
-					<li class="layui-nav-item layui-nav-itemed"><a class=""
-						href="javascript:;">项目管理</a>
+					<li class="layui-nav-item"><a class="" href="javascript:;">项目管理</a>
 						<dl class="layui-nav-child">
 							<dd>
 								<a href="javascript:;"
-									data-options="{url:'<%=path%>/project/projectAdd.jsp',title:'添加项目'   }">添加项目</a>
+									data-options="{url:'<%=path%>/project/projectAdd.jsp',title:'添加项目' }">添加项目</a>
 							</dd>
 							<dd>
 								<a href="javascript:;"
