@@ -10,11 +10,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>index页面</title>
 <link rel="stylesheet" type="text/css" href="static/layui/css/layui.css" />
+<link rel="stylesheet" href="static/css/information.css">
 </head>
 <!-- <frameset rows="100px, " noresize="noresize">
 	<frame src="header.jsp">
 	<frameset cols="20%, ">
-
 		<frame src="left.jsp">
 		<frame name="show" src="right.jsp">
 	</frameset>
@@ -24,7 +24,7 @@
 		<div class="layui-header">
 			<div class="layui-logo">项目管理系统</div>
 			<ul class="layui-nav layui-layout-right">
-				<li class="layui-nav-item"><span>${user.userName }</span></li>
+				<li class="layui-nav-item"><span>${user.userName}</span></li>
 				<li class="layui-nav-item"><a
 					href="<%=path%>/userServlet?op=logout">退了</a></li>
 			</ul>
@@ -66,10 +66,19 @@
 		<div class="layui-body" id="container">
 			<div class="layui-tab" lay-filter="tabs" lay-allowClose="true">
 				<ul class="layui-tab-title">
-					<li class="layui-this">首页</li>
+					<li class="layui-this">友情提示</li>
 				</ul>
 				<div class="layui-tab-content">
-					<div class="layui-tab-item layui-show">首页内容</div>
+					<div class="layui-tab-item layui-show">
+						<div class="informationbox">
+					        <div class="information">
+					            <h6>友情提示</h6>
+					            <p>如您在使用过程中出现技术问题，请联系我们。</p>
+					            <span>项目参与人员：刘军辉，徐红，杜佳霖</span>
+					            <span>联系QQ：1968543565</span>
+					        </div>
+					    </div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -113,7 +122,6 @@
 											});
 						});
 	</script>
-
 
 </body>
 </html>
