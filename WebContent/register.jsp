@@ -9,52 +9,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>注册页面</title>
+<link rel="stylesheet" type="text/css" href="static/layui/css/layui.css" />
+<link rel="stylesheet" type="text/css" href="static/css/login.css" />
 </head>
 <body>
-	<form action="<%=path%>/userServlet?op=toRegister" name="form1"
-		method="post">
-		<table width="98%" border="0" align="center" cellpadding="0"
-			cellspacing="1" bgcolor="#CCCCCC">
-			<tr>
-				<th height="40" colspan="2" bgcolor="#FFFFFF" class="f12b-red"
-					style="font-size: 11px;">用 户 注 册</th>
-			</tr>
-			<tr>
-				<td width="20%" height="30" align="right" bgcolor="#F9F9F9"
-					style="font-size: 11px;">用户名：</td>
-				<td width="80%" bgcolor="#FFFFFF">&nbsp; <input type="text"
-					name="name" id="loginname" />
-				</td>
-			</tr>
-			<tr>
-				<td height="30" align="right" bgcolor="#F9F9F9"
-					style="font-size: 11px;">密 码：</td>
-				<td bgcolor="#FFFFFF">&nbsp; <input type="password"
-					name="password" />
-				</td>
-			</tr>
-			<tr>
-				<td height="30" align="right" bgcolor="#F9F9F9"
-					style="font-size: 11px;">确认密 码：</td>
-				<td bgcolor="#FFFFFF">&nbsp; <input type="password"
-					name="password1" />
-				</td>
-			</tr>
-
-			<tr>
-				<td height="30" align="right" bgcolor="#F9F9F9">&nbsp;</td>
-				<td bgcolor="#FFFFFF">&nbsp; <!-- <input type="button" value="确定" onclick="check1();"/> -->
-					<input type="submit" value="确定" /> <input type="button" value="取消"
-					onclick="closeOpen()" />
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2"><c:if test="${msg != null }">
-						<p style="color: red">${msg }</p>
-					</c:if></td>
-			</tr>
-		</table>
-	</form>
+<div class="m-login-bg">
+    <div class="m-login">
+        <img src="static/images/dog.png" alt="">
+        <div class="m-login-warp">
+            <form class="layui-form" action="<%=path%>/userServlet?op=toRegister" name="form1" method="post">
+                <h3>影票购物系统注册</h3>
+                <div class="layui-form-item">
+                    <input type="text" name="name" required lay-verify="required" placeholder="名称"
+                           autocomplete="off"
+                           class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <input type="password" name="password" required lay-verify="required" placeholder="密码"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item m-login-btn">
+                    <div class="layui-inline">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="register">注册</button>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn layui-btn-primary">
+                            <a href="login.jsp"> 去登录</a>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <p class="copyright">&copy;Copyright 影票购物系统 by 刘军辉、徐红、杜佳霖、叶耿</p>
+    </div>
+</div>
+<script src="static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	
+	
+	
 	<script language="javascript">
 		function closeOpen() {
 			window.returnValue = false;
