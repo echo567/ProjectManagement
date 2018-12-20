@@ -15,7 +15,7 @@
 <body>
 <div class="m-login-bg">
     <div class="m-login">
-        <img src="static/images/dog.png" alt="">
+        <img src="static/images/cat.png" alt="">
         <div class="m-login-warp">
             <form class="layui-form" action="<%=path%>/userServlet?op=toRegister" name="form1" method="post">
                 <h3>影票购物系统注册</h3>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="layui-form-item m-login-btn">
                     <div class="layui-inline">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="register">注册</button>
+                        <button class="layui-btn" lay-submit lay-filter="register">注册</button>
                     </div>
                     <div class="layui-inline">
                         <button class="layui-btn layui-btn-primary">

@@ -40,14 +40,16 @@
 				<td>${p.startTime }</td>
 				<td>${p.user }</td>
 				<td>${p.introduction }</td>
-				<td><a
-					href="<%=path%>/projectServlet?op=toUpdatePage&id=${p.id }">修改</a>
-					<a href="<%=path%>/projectServlet?op=toDelete&id=${p.id }">删除</a></td>
+				<td>
+					<a class="layui-btn layui-btn-xs" lay-event="edit" href="<%=path%>/projectServlet?op=toUpdatePage&id=${p.id }">编辑</a>
+  					<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" href="<%=path%>/projectServlet?op=toDelete&id=${p.id }">删除</a>
+				</td>
 			</tr>
 		</c:forEach>
     </tbody>
   </table>
 </div>
 <script src="static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+
 </body>
 </html>

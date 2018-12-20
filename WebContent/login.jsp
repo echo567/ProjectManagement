@@ -15,7 +15,7 @@
 <body>
 	<div class="m-login-bg">
 		<div class="m-login">
-			<img src="static/images/dog.png" alt="">
+			<img src="static/images/cat.png" alt="">
 			<div class="m-login-warp">
 				<form class="layui-form" action="<%=path%>/userServlet?op=toLogin"
 					method="post">
@@ -32,7 +32,7 @@
 					</div>
 					<div class="layui-form-item m-login-btn">
 						<div class="layui-inline">
-							<button class="layui-btn layui-btn-normal" lay-submit
+							<button class="layui-btn" lay-submit
 								lay-filter="login">登录</button>
 						</div>
 						<div class="layui-inline">

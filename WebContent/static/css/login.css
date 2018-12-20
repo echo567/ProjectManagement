@@ -12,7 +12,6 @@ input:-webkit-autofill {
 }
 /*按钮移上去颜色*/
 .layui-btn-primary:hover {
-  border-color: #1E9FFF;
   color: #333;
 }
 /*页面背景色*/
@@ -40,10 +39,10 @@ input:-webkit-autofill {
   padding-top: 10px;
 }
 .m-login>img {
-  width: 400px;
+  width: 200px;
   position: absolute;
-  top: -264px;
-  left: 0;
+  top: -140px;
+  left: 87px;
   z-index: 0;
 }
 .m-login-warp {
