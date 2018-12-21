@@ -19,7 +19,7 @@
 			<label class="layui-form-label">项目名</label>
 			<div class="layui-input-block">
 				<input type="text" name="name" lay-verify="required"
-					autocomplete="off" placeholder="请输入项目名" class="layui-input">
+					autocomplete="off" placeholder="请输入项目名(此项为必填，否则会出错)" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item">

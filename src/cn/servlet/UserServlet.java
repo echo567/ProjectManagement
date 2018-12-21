@@ -1,6 +1,8 @@
 package cn.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -46,6 +48,9 @@ public class UserServlet extends HttpServlet {
 			toUpdate(request, response);
 		} else if ("logout".equals(op)) {
 			logout(request, response);
+		} else {
+			PrintWriter pw = response.getWriter();
+			pw.println("参数不正确，请检查后重新请求");
 		}
 	}
 
@@ -121,11 +126,6 @@ public class UserServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		try {
-			if (name == null || password == null) {
-				request.setAttribute("msg", "姓名或密码不能为空");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
-				return;
-			}
 
 			User user = userDao.selectUserByName(name);
 			if (user.getUserName() == null) {

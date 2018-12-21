@@ -23,7 +23,7 @@
 			<div class="layui-input-inline">
 				<input type="text" name="userName" lay-verify="required"
 					autocomplete="off" placeholder="${user.userName }"
-					class="layui-input" value="${user.userName }">
+					class="layui-input">
 			</div>
 		</div>
 

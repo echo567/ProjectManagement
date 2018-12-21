@@ -1,6 +1,7 @@
 package cn.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -55,20 +56,23 @@ public class ProjectServlet extends HttpServlet {
 			toUpdatePage(request, response);
 		} else if ("toSelect".equals(op)) {
 			toSelect(request, response);
+		} else {
+			PrintWriter pw = response.getWriter();
+			pw.println("参数不正确，请检查后重新请求");
 		}
 
 	}
 
 	private void toSelect(HttpServletRequest request, HttpServletResponse response) {
 		try {
-		String name = request.getParameter("name");
-		Project p = projectDao.selectProjectByname(name);
-		if (p.getId() != null) {
-			request.setAttribute("p", p);
-		} else {
-			request.setAttribute("msg", "不存在此名称的项目");
-		}
-		
+			String name = request.getParameter("name");
+			Project p = projectDao.selectProjectByname(name);
+			if (p.getId() != null) {
+				request.setAttribute("p", p);
+			} else {
+				request.setAttribute("msg", "不存在此名称的项目");
+			}
+
 			request.getRequestDispatcher("/project/projectSelect.jsp").forward(request, response);
 		} catch (ServletException e) {
 			// TODO Auto-generated catch block
@@ -141,8 +145,7 @@ public class ProjectServlet extends HttpServlet {
 			String user = request.getParameter("user").trim();
 			String introduction = request.getParameter("introduction").trim();
 			System.out.println(name + " " + startTime + " " + user + " " + introduction);
-			if (name == null) {
-				System.out.println("项目增加失败");
+			if (name == "") {
 				request.setAttribute("msg", "项目增加失败");
 				request.getRequestDispatcher("/project/projectAdd.jsp").forward(request, response);
 				return;
