@@ -40,7 +40,7 @@
 				<col width="200">
 				<col width="200">
 				<col width="200">
-				<col>
+				<col width="200">
 			</colgroup>
 			<tr>
 				<th>项目id</th>
@@ -51,7 +51,7 @@
 				<th>操作</th>
 			</tr>
 
-			<tr>
+			<tr align="center">
 				<td>${p.id }</td>
 				<td>${p.name }</td>
 				<td>${p.startTime }</td>

@@ -73,7 +73,7 @@ public class UserServlet extends HttpServlet {
 			String userName = request.getParameter("userName");
 			String userPassword = request.getParameter("userPassword");
 
-			if (userName != null) {
+			if (userName != "") {
 				userDatabase.setUserName(userName);
 			}
 			if (userPassword != "") {
